@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://danv3dgkkmxp1"]
+[gd_scene load_steps=9 format=3 uid="uid://danv3dgkkmxp1"]
 
 [ext_resource type="Theme" uid="uid://drays61pfu7xc" path="res://lessons/main_theme.tres" id="1_mvymc"]
 [ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="1_slglb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dyntac5banvew" path="res://lessons/dioalogue.gd" id="2_565q1"]
 [ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="3_mvymc"]
 [ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="4_1ye0o"]
+[ext_resource type="AudioStream" uid="uid://bafjgt7eu3x5a" path="res://assets/talking_synth.ogg" id="7_mvg8v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_565q1"]
 shader = ExtResource("1_slglb")
@@ -75,6 +76,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Hello World!"
 fit_content = true
+visible_characters = 4
+visible_ratio = 0.352
 
 [node name="NextButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -91,3 +94,7 @@ offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "next"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_mvg8v")
