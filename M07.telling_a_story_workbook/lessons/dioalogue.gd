@@ -21,7 +21,7 @@ var bodies := {
 var dialogue_items: Array[Dictionary] = [
 	{
 		"expression": expressions["regular"],
-		"text": "I've been studying arrays and dictionaries lately.",
+		"text": "I've been learning about [wave]arrays and dictionaries[/wave] lately.",
 		"character": bodies["sophia"],
 	},
 	{
@@ -31,7 +31,7 @@ var dialogue_items: Array[Dictionary] = [
 	},
 	{
 		"expression": expressions["sad"],
-		"text": "Well... it's a little complicated!",
+		"text": "Well... it's a little [shake]complicated[/shake]!",
 		"character": bodies["sophia"],
 	},
 	{
@@ -56,12 +56,15 @@ var dialogue_items: Array[Dictionary] = [
 	},
 	{
 		"expression": expressions["happy"],
-		"text": "Thanks for the encouragement. Time to LEARN!!!",
+		"text": "Thanks for the encouragement. Time to [tornado freq=3.0][rainbow val=1.0]LEARN!!![/rainbow][/tornado]",
 		"character": bodies["sophia"],
 	},
 ]
 
 var current_item_index := 0
+
+
+
 
 func _ready() -> void:
 	show_text()
@@ -74,6 +77,7 @@ func show_text() -> void:
 	rich_text_label.visible_ratio = 0.0
 	body.texture = current_item["character"]
 	
+	
 	var tween :=create_tween()
 	var text_appearing_duration: float = current_item["text"].length() / 30.0
 	tween.tween_property(rich_text_label, "visible_ratio", 1.0, text_appearing_duration)
@@ -83,6 +87,11 @@ func show_text() -> void:
 	audio_stream_player.play(sound_start_position)
 	
 	tween.finished.connect(audio_stream_player.stop)
+	
+	next_button.disabled = true
+	tween.finished.connect(func() -> void:
+		next_button.disabled = false
+		)
 
 func advanced() -> void:
 	current_item_index += 1
